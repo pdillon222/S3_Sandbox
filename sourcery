@@ -1,0 +1,28 @@
+#!/bin/bash
+
+export abs_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source ${abs_path}/s3_assets/s3_aliases
+
+build_s3_sandbox(){
+  docker build -t s3-sandbox:latest .
+}
+
+run_s3_sandbox(){
+  docker run --name s3-sandbox -dt -v ${abs_path}/s3_assets:/s3 s3-sandbox
+}
+
+stop_s3_sandbox(){
+  docker kill s3-sandbox
+}
+
+remove_s3_sandbox(){
+  docker rm s3-sandbox
+}
+
+enter_s3_sandbox(){
+  docker exec -it s3-sandbox bash
+}
+
+cmd_s3_sandbox(){
+  docker exec s3-sandbox "${@}"
+}

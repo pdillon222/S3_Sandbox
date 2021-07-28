@@ -1,0 +1,15 @@
+#!/bin/bash
+
+cmd_s3_sandbox(){
+  docker exec s3-sandbox "${@}"
+}
+
+user_setup(){
+  read -p "Enter AWS Access Key: " access_key
+  read -p "Enter AWS Secret Key: " secret_key
+  read -p "Enter default AWS region: " region
+  cmd_s3_sandbox aws configure set aws_access_key_id ${access_key}
+  cmd_s3_sandbox aws configure set aws_secret_access_key ${secret_key}
+  cmd_s3_sandbox aws configure set region ${region}
+  cmd_s3_sandbox aws configure output json
+}
