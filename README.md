@@ -23,3 +23,4 @@ $ run_s3_sandbox
 $ enter_s3_sandbox
 root@316857cf254c:/s3#
 ```
+#### Container is running, what do we do with it?
