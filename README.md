@@ -1,7 +1,7 @@
 # S3_Sandbox
 #### A Dockerized Environment for AWS S3 Testing
 
-#### -Getting Started-
+#### Getting Started
 - The `sourcery` file contains shell functions, allowing for simple interaction with the container image.
 - Source the file to add the functions to your current shell:
 ```
@@ -64,3 +64,35 @@ drwxr-xr-x 2 root root 4096 Jul 30 23:15 .aws
 drwxr-xr-x 3 root root 4096 Jul 30 21:32 .cache
 -rw-r--r-- 1 root root  161 Dec  5  2019 .profile
 ```
+#### The Container environment
+- If we `ls` the working directory on the container:
+```
+$ cmd_s3_sandbox ls
+inf_run.py
+requirements.txt
+s3_aliases
+sync
+```
+```
+$ cmd_s3_sandbox pwd
+/s3
+```
+- We can see that the local repo directory `s3_assets` has been bind mounted as the default working directory `s3` in the container
+- This means that any files added locally to `s3_assets` will end up in the container
+- For example:
+```
+$ ls s3_assets/sync/
+test1  test2  test3
+
+$ echo "placeholder" > s3_assets/sync/new_file
+
+$ ls s3_assets/sync/
+new_file  test1  test2  test3
+
+$ cmd_s3_sandbox ls sync/
+new_file
+test1
+test2
+test3
+```
+- Very good!  This means (and the name is not a coincidence), that we can use the local `s3_assets/sync` folder as a staging directory for adding individual files (or syncing entire directories) to buckets
