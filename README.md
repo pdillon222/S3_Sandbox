@@ -11,6 +11,7 @@ $ source sourcery
   - `build_s3_sandbox`: Build the container
   - `run_s3_sandbox`: Run the container in background mode
   - `stop_s3_sandbox`: Stop the running container
+  - `start_s3_sandbox`: Start the stopped container
   - `remove_s3_sandbox`: Delete the current container image
   - `enter_s3_sandbox`: Enter the running container environment
   - `cmd_s3_sandbox`: Send shell command to container (stdout sent back to current shell)
