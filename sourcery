@@ -15,6 +15,10 @@ stop_s3_sandbox(){
   docker kill s3-sandbox
 }
 
+start_s3_sandbox(){
+  docker start s3-sandbox
+}
+
 remove_s3_sandbox(){
   docker rm s3-sandbox
 }
