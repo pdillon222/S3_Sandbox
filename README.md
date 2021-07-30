@@ -55,7 +55,7 @@ $ s3_sandbox ls
 - We see that having properly configured the AWS user profile, we can now see their buckets
 - The .aws directory, has been set up in `/root`:
 ```
-$cmd_s3_sandbox ls -la /root
+$ cmd_s3_sandbox ls -la /root
 total 24
 drwx------ 1 root root 4096 Jul 30 23:15 .
 drwxr-xr-x 1 root root 4096 Jul 30 21:32 ..
